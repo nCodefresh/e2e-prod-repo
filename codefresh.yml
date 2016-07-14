@@ -1,0 +1,14 @@
+version: '1.0'
+
+steps:
+  build-docker-node-hw:
+    type: build
+    description: e2e prod sanity test
+    image-name: ncodefresh/e2e-prod-repo
+    dockerfile: Dockerfile
+    tag: latest
+
+  push-dockerhub:
+    type: push
+    candidate: ${{build-docker-node-hw}}
+    tag: latest
